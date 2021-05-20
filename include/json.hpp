@@ -455,19 +455,25 @@ namespace fox
             static void serialize(Value& j, const std::unordered_map<K, V>& value)
             {
                 std::cout << "Serialize unordered_map" << std::endl;
-                // for (auto& pair : value)
-                // {
-                //     j.emplace(castToString(pair.first), pair.second);
-                // }
+                for (auto& pair : value)
+                {
+                    Value key = pair.first;
+                    Value value = pair.second;
+                    j[key.get<std::string>()] = value;
+                }
             }
 
             static void deserialize(const Value& j, std::unordered_map<K, V>& value)
             {
                 std::cout << "Deserialize unordered_map" << std::endl;
-                // for (auto it = j.begin(); it != j.end(); ++it)
-                // {
-                //     value.emplace(fromString<K>(it.key()), it.value());
-                // }
+                if (j.is_object())
+                {
+                    Object obj = j.get<Object>();
+                    for (auto it = obj.begin(); it != obj.end(); ++it)
+                    {
+                        value[it->first] = it->second.get<V>();
+                    }
+                }
             }
         };
 

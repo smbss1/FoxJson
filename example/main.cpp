@@ -66,5 +66,18 @@ int main()
     std::vector<Some> v1 = {{0}, {1}, {2}, {3}};
     j = v1;
     std::cout << j << std::endl;
+
+    std::unordered_map<std::string, int> o;
+    o["0"] = 0;
+    o["1"] = 1;
+    j = o;
+    std::cout << j << std::endl;
+    o = j.get<std::unordered_map<std::string, int>>();
+    std::cout << "{" << std::endl;
+    for (auto it : o)
+    {
+        std::cout << it.first << ": " << it.second << std::endl;
+    }
+    std::cout << "}" << std::endl;
     return 0;
 }

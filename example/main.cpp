@@ -2,6 +2,7 @@
 #include "json.hpp"
 #include <iostream>
 
+
 struct Some
 {
     int data;
@@ -10,7 +11,7 @@ struct Some
 namespace fox
 {
     template <>
-    void serialize(json& j, const Some& obj)
+    void json::serialize(fox::json::Value& j, const Some& obj)
     {
         // j = meta::serialize(obj);
         std::cout << "Serialize Some" << std::endl;
@@ -18,13 +19,15 @@ namespace fox
     }
 
     template <>
-    void deserialize(const json& j, Some& obj)
+    void json::deserialize(const fox::json::Value& j, Some& obj)
     {
         std::cout << "Deserialize Some" << std::endl;
         obj.data = j["data"].get<int>();
         // meta::deserialize(obj, j);
     }
 }
+
+using json = fox::json::Value;
 
 int main()
 {
@@ -43,8 +46,8 @@ int main()
             }
         }
     )";
-    fox::json j = fox::json::parse(str);
-    std::cout << j.get<fox::JSONObject>()["string"].get<std::string>() << std::endl;
+    json j = fox::json::parse(str);
+    std::cout << j.get<fox::json::Object>()["string"].get<std::string>() << std::endl;
     std::cout << j << std::endl;
     Some s = {4};
     j = s;

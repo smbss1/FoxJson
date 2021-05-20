@@ -8,39 +8,42 @@
 
 namespace fox
 {
-    enum json_token
+    namespace json
     {
-        OpenBracket,
-        CloseBracket,
-        OpenSquareBracket,
-        CloseSquareBracket,
-        Colon,
-        SemiColon,
-        Comma,
-        String,
-        Number_integer,
-        Number_unsigned,
-        Number_float,
-        Identifier,
-        True,
-        False,
-        Null,
-    };
+        enum json_token
+        {
+            OpenBracket,
+            CloseBracket,
+            OpenSquareBracket,
+            CloseSquareBracket,
+            Colon,
+            SemiColon,
+            Comma,
+            String,
+            Number_integer,
+            Number_unsigned,
+            Number_float,
+            Identifier,
+            True,
+            False,
+            Null,
+        };
 
-    class Parser : public ParserHelper
-    {
-    private:
-    public:
-        Parser();
-        ~Parser();
+        class Parser : public ParserHelper
+        {
+        private:
+        public:
+            Parser();
+            ~Parser();
 
-        json process(const std::string& str);
-        json parse();
+            Value process(const std::string& str);
+            Value parse();
 
-        json parse_object();
-        json parse_array();
+            Value parse_object();
+            Value parse_array();
 
-    };
+        };
+    }
 }
 
 #endif

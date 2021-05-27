@@ -399,30 +399,13 @@ namespace fox
         void serialize(Value& j, const T& value)
         {
             Serializer<T>::serialize(j, value);
-            // j = meta::serialize(obj);
         }
 
         template <typename T>
         void deserialize(const Value& j, T& value)
         {
             Serializer<T>::deserialize(j, value);
-            // meta::deserialize(obj, j);
         }
-
-        // template <typename T>
-        // struct Serializer
-        // {
-        //     static void serialize(Value& j, const T& value)
-        //     {
-        //         std::cout << "Serialize" << std::endl;
-        //         // calls the "to_json" method in T's namespace
-        //     }
-
-        //     static void deserialize(const Value& j, T& value) {
-        //         std::cout << "Deserialize" << std::endl;
-        //         // same thing, but with the "from_json" method
-        //     }
-        // };
 
         // Serializer
         template <typename T>
@@ -454,7 +437,6 @@ namespace fox
         {
             static void serialize(Value& j, const std::unordered_map<K, V>& value)
             {
-                std::cout << "Serialize unordered_map" << std::endl;
                 for (auto& pair : value)
                 {
                     Value key = pair.first;
@@ -465,14 +447,11 @@ namespace fox
 
             static void deserialize(const Value& j, std::unordered_map<K, V>& value)
             {
-                std::cout << "Deserialize unordered_map" << std::endl;
                 if (j.is_object())
                 {
                     Object obj = j.get<Object>();
                     for (auto it = obj.begin(); it != obj.end(); ++it)
-                    {
                         value[it->first] = it->second.get<V>();
-                    }
                 }
             }
         };

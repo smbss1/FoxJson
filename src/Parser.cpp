@@ -38,7 +38,6 @@ namespace fox
             {
                 if (!Init(str))
                     throw ParserError(CurrentToken(), "Cannot parse an empty string.");
-                helper::Dump(olex);
                 return parse();
             }
             catch(const std::exception& e)

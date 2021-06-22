@@ -25,7 +25,6 @@ namespace fox
             olex.define(True, "true");
             olex.define(False, "false");
             olex.define(Null, "null");
-            olex.define(Identifier, "[a-zA-Z_]+[0-9]*");
         }
         
         Parser::~Parser()
@@ -50,11 +49,7 @@ namespace fox
         Value Parser::parse()
         {
             Token token;
-            if (IsTokenThenAssign(Identifier, token))
-            {
-                return Value(token.GetText());
-            }
-            else if (IsTokenThenAssign(String, token))
+            if (IsTokenThenAssign(String, token))
             {
                 return Value(token.GetText());
             }

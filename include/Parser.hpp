@@ -23,7 +23,6 @@ namespace fox
             Number_integer,
             Number_unsigned,
             Number_float,
-            Identifier,
             True,
             False,
             Null,

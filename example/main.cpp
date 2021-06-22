@@ -33,16 +33,16 @@ int main()
 {
     std::string str = R"(
         {
-            string: "lol",
-            number: 10,
-            neg_number: -10,
-            array: [1, 2, 3],
-            boolean: true,
-            null: null,
-            float: .10,
-            unsigned: 100,
-            obj: {
-                lol: "lol"
+            "string": "lol",
+            "number": 10,
+            "neg_number": -10,
+            "array": [1, 2, 3],
+            "boolean": true,
+            "null": null,
+            "float": .10,
+            "unsigned": 100,
+            "obj": {
+                "lol": "lol"
             }
         }
     )";

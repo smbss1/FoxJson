@@ -7,8 +7,9 @@
 class ParserError : public AException
 {
 public:
-    ParserError(const Token& oToken, const std::string &) throw();
-    virtual ~ParserError() throw();
+    inline ParserError(const Token& oToken, const std::string& strMsg) noexcept
+            : AException("[line " + std::to_string(oToken.m_iLinesTraversed) + "] " + strMsg) { }
+    inline ~ParserError() noexcept override = default;
 };
 
 #endif

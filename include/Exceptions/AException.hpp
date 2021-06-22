@@ -8,10 +8,16 @@
 class AException : public std::exception
 {
 public:
-    AException(const std::string &) throw();
-    virtual ~AException() throw();
+    inline explicit AException(const std::string& strMsg) noexcept : m_strMsg(strMsg)
+    {
+    }
 
-    const char *what() const throw();
+    inline ~AException() noexcept override = default;
+
+    inline const char *what() const noexcept override
+    {
+        return m_strMsg.c_str();
+    }
 
 private:
     std::string m_strMsg;

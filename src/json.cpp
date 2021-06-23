@@ -74,8 +74,11 @@ namespace fox
         {
             if (type == json_type::number_integer)
                 return value.number_integer;
-            else
-                return 0;
+            if (type == json_type::number_unsigned)
+                return static_cast<int>(value.number_unsigned);
+            if (type == json_type::number_float)
+                return static_cast<int>(value.number_float);
+            return 0;
         }
 
         template<>
@@ -83,8 +86,11 @@ namespace fox
         {
             if (type == json_type::number_unsigned)
                 return value.number_unsigned;
-            else
-                return 0;
+            if (type == json_type::number_integer)
+                return static_cast<unsigned>(value.number_integer);
+            if (type == json_type::number_float)
+                return static_cast<unsigned>(value.number_float);
+            return 0;
         }
 
         template<>
@@ -92,8 +98,11 @@ namespace fox
         {
             if (type == json_type::number_float)
                 return value.number_float;
-            else
-                return 0.0f;
+            if (type == json_type::number_integer)
+                return static_cast<float>(value.number_integer);
+            if (type == json_type::number_unsigned)
+                return static_cast<float>(value.number_unsigned);
+            return 0.0f;
         }
 
         template<>

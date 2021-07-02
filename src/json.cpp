@@ -151,7 +151,7 @@ namespace fox
                     for (std::size_t i = 0; i < value.object->size() - 1; ++i, ++it)
                     {
                         result += indent_str_v;
-                        result += it->first;
+                        result += "\"" + it->first + "\"";
                         result += ": ";
                         result += it->second.dump(depth + 1);
                         result += ",\n";
@@ -159,7 +159,7 @@ namespace fox
 
                     assert(it != value.object->end());
                     assert(std::next(it) == value.object->end());
-                    result += indent_str_v + it->first + ": " + it->second.dump() + "\n";
+                    result += indent_str_v + "\"" + it->first + "\"" + ": " + it->second.dump() + "\n";
                     result += indent_str + "}";
                     break;
                 }

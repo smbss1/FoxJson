@@ -15,7 +15,7 @@ add_library(fox_json ${CORE_SRCS})
 target_include_directories(fox_json PUBLIC "include")
 target_link_libraries(fox_json PRIVATE lexer Threads::Threads)
 
-set(FOX_JSON_EXAMPLE 1)
+# set(FOX_JSON_EXAMPLE 1)
 
 if (FOX_JSON_EXAMPLE)
     add_subdirectory(example)

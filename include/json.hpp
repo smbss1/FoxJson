@@ -62,15 +62,22 @@ namespace fox
                 /// default constructor (for null values)
                 json_value() = default;
                 /// constructor for booleans
-                json_value(bool v) noexcept : boolean(v) {}
+                explicit json_value(bool v) noexcept : boolean(v) {}
                 /// constructor for numbers (integer)
-                json_value(int v) noexcept : number_integer(v) {}
+                explicit json_value(int8_t v) noexcept : number_integer(v) {}
+                explicit json_value(int16_t v) noexcept : number_integer(v) {}
+                explicit json_value(int32_t v) noexcept : number_integer(v) {}
+                explicit json_value(int64_t v) noexcept : number_integer(v) {}
                 /// constructor for numbers (unsigned)
-                json_value(unsigned v) noexcept : number_unsigned(v) {}
+                explicit json_value(uint8_t v) noexcept : number_unsigned(v) {}
+                explicit json_value(uint16_t v) noexcept : number_unsigned(v) {}
+                explicit json_value(uint32_t v) noexcept : number_unsigned(v) {}
+                explicit json_value(uint64_t v) noexcept : number_unsigned(v) {}
                 // /// constructor for numbers (floating-point)
-                json_value(float v) noexcept : number_float(v) {}
+                explicit json_value(float v) noexcept : number_float(v) {}
+                explicit json_value(double v) noexcept : number_float(v) {}
                 /// constructor for empty values of a given type
-                json_value(json_type t)
+                explicit json_value(json_type t)
                 {
                     object = nullptr;
                     string = nullptr;
@@ -180,9 +187,16 @@ namespace fox
             ~Value();
             Value() = default;
             Value(bool v) : value(v), type(json_type::boolean) {}
-            Value(int v) : value(v), type(json_type::number_integer) {}
-            Value(unsigned v) : value(v), type(json_type::number_unsigned) {}
+            Value(int8_t v) : value(v), type(json_type::number_integer) {}
+            Value(int16_t v) : value(v), type(json_type::number_integer) {}
+            Value(int32_t v) : value(v), type(json_type::number_integer) {}
+            Value(int64_t v) : value(v), type(json_type::number_integer) {}
+            Value(uint8_t v) : value(v), type(json_type::number_unsigned) {}
+            Value(uint16_t v) : value(v), type(json_type::number_unsigned) {}
+            Value(uint32_t v) : value(v), type(json_type::number_unsigned) {}
+            Value(uint64_t v) : value(v), type(json_type::number_unsigned) {}
             Value(float v) : value(v), type(json_type::number_float) {}
+            Value(double v) : value(v), type(json_type::number_float) {}
             Value(json_type t) : value(t), type(t) {}
             Value(const char* v) : value(v), type(json_type::string) {}
             Value(const std::string& v) : value(v), type(json_type::string) {}

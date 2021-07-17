@@ -40,6 +40,7 @@ int main()
             "boolean": true,
             "null": null,
             "float": .10,
+            "double": .10,
             "unsigned": 100,
             "obj": {
                 "lol": "lol"

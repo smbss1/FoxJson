@@ -57,7 +57,7 @@ namespace fox
                 // /// number (unsigned integer)
                 unsigned number_unsigned;
                 // /// number (floating-point)
-                float number_float;
+                double number_float;
 
                 /// default constructor (for null values)
                 json_value() = default;
@@ -380,11 +380,27 @@ namespace fox
         const char* Value::get() const;
 
         template<>
-        int Value::get() const;
+        int8_t Value::get() const;
         template<>
-        unsigned Value::get() const;
+        int16_t Value::get() const;
+        template<>
+        int32_t Value::get() const;
+        template<>
+        int64_t Value::get() const;
+
+        template<>
+        uint8_t Value::get() const;
+        template<>
+        uint16_t Value::get() const;
+        template<>
+        uint32_t Value::get() const;
+        template<>
+        uint64_t Value::get() const;
+
         template<>
         float Value::get() const;
+        template<>
+        double Value::get() const;
 
         template<>
         bool Value::get() const;

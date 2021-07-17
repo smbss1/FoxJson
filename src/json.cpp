@@ -70,28 +70,101 @@ namespace fox
         }
 
         template<>
-        int Value::get() const
+        int8_t Value::get() const
         {
             if (type == json_type::number_integer)
                 return value.number_integer;
             if (type == json_type::number_unsigned)
-                return static_cast<int>(value.number_unsigned);
+                return static_cast<int8_t>(value.number_unsigned);
             if (type == json_type::number_float)
-                return static_cast<int>(value.number_float);
+                return static_cast<int8_t>(value.number_float);
             return 0;
         }
 
         template<>
-        unsigned Value::get() const
+        int16_t Value::get() const
+        {
+            if (type == json_type::number_integer)
+                return value.number_integer;
+            if (type == json_type::number_unsigned)
+                return static_cast<int16_t>(value.number_unsigned);
+            if (type == json_type::number_float)
+                return static_cast<int16_t>(value.number_float);
+            return 0;
+        }
+
+        template<>
+        int32_t Value::get() const
+        {
+            if (type == json_type::number_integer)
+                return value.number_integer;
+            if (type == json_type::number_unsigned)
+                return static_cast<int32_t>(value.number_unsigned);
+            if (type == json_type::number_float)
+                return static_cast<int32_t>(value.number_float);
+            return 0;
+        }
+
+        template<>
+        int64_t Value::get() const
+        {
+            if (type == json_type::number_integer)
+                return value.number_integer;
+            if (type == json_type::number_unsigned)
+                return static_cast<int64_t>(value.number_unsigned);
+            if (type == json_type::number_float)
+                return static_cast<int64_t>(value.number_float);
+            return 0;
+        }
+
+        template<>
+        uint8_t Value::get() const
         {
             if (type == json_type::number_unsigned)
                 return value.number_unsigned;
             if (type == json_type::number_integer)
-                return static_cast<unsigned>(value.number_integer);
+                return static_cast<uint8_t>(value.number_integer);
             if (type == json_type::number_float)
-                return static_cast<unsigned>(value.number_float);
+                return static_cast<uint8_t>(value.number_float);
             return 0;
         }
+
+        template<>
+        uint16_t Value::get() const
+        {
+            if (type == json_type::number_unsigned)
+                return value.number_unsigned;
+            if (type == json_type::number_integer)
+                return static_cast<uint16_t>(value.number_integer);
+            if (type == json_type::number_float)
+                return static_cast<uint16_t>(value.number_float);
+            return 0;
+        }
+
+        template<>
+        uint32_t Value::get() const
+        {
+            if (type == json_type::number_unsigned)
+                return value.number_unsigned;
+            if (type == json_type::number_integer)
+                return static_cast<uint32_t>(value.number_integer);
+            if (type == json_type::number_float)
+                return static_cast<uint32_t>(value.number_float);
+            return 0;
+        }
+
+        template<>
+        uint64_t Value::get() const
+        {
+            if (type == json_type::number_unsigned)
+                return value.number_unsigned;
+            if (type == json_type::number_integer)
+                return static_cast<uint64_t>(value.number_integer);
+            if (type == json_type::number_float)
+                return static_cast<uint64_t>(value.number_float);
+            return 0;
+        }
+
 
         template<>
         float Value::get() const
@@ -102,6 +175,18 @@ namespace fox
                 return static_cast<float>(value.number_integer);
             if (type == json_type::number_unsigned)
                 return static_cast<float>(value.number_unsigned);
+            return 0.0f;
+        }
+
+        template<>
+        double Value::get() const
+        {
+            if (type == json_type::number_float)
+                return value.number_float;
+            if (type == json_type::number_integer)
+                return static_cast<double>(value.number_integer);
+            if (type == json_type::number_unsigned)
+                return static_cast<double>(value.number_unsigned);
             return 0.0f;
         }
 

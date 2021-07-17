@@ -245,6 +245,8 @@ namespace fox
                 // type = json_type::null;
             }
 
+            json_type get_type() const { return type; }
+
             Value& operator=(Value&& other)
             {
                 clear_internal();

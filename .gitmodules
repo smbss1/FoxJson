@@ -1,0 +1,3 @@
+[submodule "submodules/GenericLexer"]
+	path = submodules/GenericLexer
+	url = https://github.com/smbss1/GenericLexer
